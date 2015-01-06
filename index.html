@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <!-- Respoke client library -->
+        <script src="https://cdn.respoke.io/respoke.min.js"></script>
+
+        <!-- jQuery, for this example -->
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+    <style type="text/css">
+#messages {
+    height: 400px;
+    width: 400px;
+    border: 1px solid #c7c7c7;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 5px;
+}
+
+#textToSend {
+    width: 400px;
+    padding: 5px;
+}
+    </style>
+
+    </head>
+    <body>
+        <div id="messaging">
+		<input id='click2call' type='button' value='Click To Call' />
+        </div>
+
+    </body>
+
+<script>
+
+
+$("#click2call").click(function (){
+	// Click To call	
+	var client = respoke.createClient({
+    	endpointId: "bob",
+      appId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX", //tvd
+    	developmentMode: true
+	});
+	
+	console.log(client);
+
+	client.connect({
+    	onSuccess: function () {
+        	// call Asterisk
+        	client.startAudioCall({
+            	endpointId: "sales"
+        	});
+    	}
+	});
+});
+
+
+
+
+</script>
+
+</html>
+
+
