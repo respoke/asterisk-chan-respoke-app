@@ -37,7 +37,9 @@ $("#click2call").click(function (){
 	// Click To call	
 	var client = respoke.createClient({
     	endpointId: "bob",
-      appId: "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXXX", //tvd
+      appId: "58496531-7ac2-4499-9924-f669ffaf4025", //tvd - developer mode
+      //appId: "63c52041-5e91-456b-b450-48926feb3964", //tvd - brokered authentication
+      //appId: "8f8b6df6-e275-412c-b780-6591f4241d71", //davies
     	developmentMode: true
 	});
 	
@@ -46,9 +48,13 @@ $("#click2call").click(function (){
 	client.connect({
     	onSuccess: function () {
         	// call Asterisk
-        	client.startAudioCall({
-            	endpointId: "sales"
-        	});
+        	/*client.startAudioCall({
+            	endpointId: "telviva-test"
+        	});*/
+            
+    			client.startPhoneCall({
+            number: "+12564286060"
+    			});
     	}
 	});
 });
